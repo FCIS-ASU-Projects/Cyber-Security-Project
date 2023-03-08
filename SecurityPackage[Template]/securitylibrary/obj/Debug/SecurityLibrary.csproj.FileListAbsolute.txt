@@ -10,3 +10,9 @@ C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrar
 C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
 C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.dll
 C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\Users\Home\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\Users\Home\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\Users\Home\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\Users\Home\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Home\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\Users\Home\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
