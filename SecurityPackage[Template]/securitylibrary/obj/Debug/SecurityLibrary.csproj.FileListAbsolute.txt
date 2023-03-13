@@ -10,3 +10,15 @@ C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrar
 C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
 C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.dll
 C:\Users\GIGABYTE\Downloads\startupcode\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
