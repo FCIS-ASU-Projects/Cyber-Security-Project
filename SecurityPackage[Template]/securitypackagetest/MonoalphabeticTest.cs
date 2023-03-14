@@ -13,8 +13,7 @@ namespace SecurityPackageTest
         string mainPlain = "meetmeafterthetogaparty";
         string mainCipher = "phhwphdiwhuwkhwrjdsduwb".ToUpper();
         string mainKey = "defghijklmnopqrstuvwxyzabc";
-
-
+        
         string mainPlain1 = "abcdefghijklmnopqrstuvwxyz";
         string mainCipher1 = "isyvkjruxedzqmctplofnbwgah".ToUpper();
         string mainKey1 = "isyvkjruxedzqmctplofnbwgah";
