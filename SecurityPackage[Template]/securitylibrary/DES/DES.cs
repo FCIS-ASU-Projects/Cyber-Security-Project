@@ -155,7 +155,52 @@ namespace SecurityLibrary.DES
         
         public override string Decrypt(string cipherText, string key)
         {
-            throw new NotImplementedException();
+            string plainText = "";
+            string[] binaryText = Text_to_Binary(cipherText);
+            for (int i = 0; i < binaryText.Length; i++)
+            {
+                string perm = permutation(binaryText[i], IP);
+                string[] k = Text_to_Binary(key);
+                string[] keys = generate_key(k[i]);
+                string L = "";
+                for (int c = 0; c < 32; c++)
+                    L += perm[c];
+
+                string R = "";
+                for (int c = 32; c < perm.Length; c++)
+                    R += perm[c];
+
+                for (int r = 15;  r >=0 ; r--)
+                {
+                    // save old right
+                    string old_R = R;
+
+                    // Expand right (32 bits) to (48 bits)
+                    string new_R = expansion(R);
+
+                    // XOR between new_R (48 bits) and key[num Round] (48 bits)
+                    new_R = XOR(new_R, keys[r]);
+
+                    // Apply S -boxes, input-> (48 bits) output-> (32 bits)
+                    new_R = substition(new_R);
+                  
+                    //Apply permutation function, output-> (32 bits)
+                    new_R = permutation(new_R, P);
+
+                    // new right for next iteration ->  XOR between left (32 bits) and  permutation's output (32 bits)
+                    R = XOR(new_R, L );
+                    //Console.WriteLine(R);
+                    //new left for next iteration
+                    L = old_R; 
+                   // Console.WriteLine(L);
+                }
+                swap(ref L, ref R);
+                string plain = permutation((L + R), Inv_P);
+                plain = BinToHex(plain);
+                plainText +=plain;
+            }
+
+            return plainText;
         }
 
         public override string Encrypt(string plainText, string key)
@@ -216,7 +261,7 @@ namespace SecurityLibrary.DES
                 string cipher = permutation( (L+R) , Inv_P);
 
                 //Convert form Binary to Hex
-                cipher = Binary_to_Hex(cipher);
+                cipher = BinToHex(cipher);
                 
                 // Concanucate cipherText
                 cipherText += cipher;
@@ -330,7 +375,7 @@ namespace SecurityLibrary.DES
             string [] binaryText = binary.ToArray();
             return binaryText;
         }
-        
+
         private string expansion(string R)
         {
             string new_R = "";
@@ -401,18 +446,67 @@ namespace SecurityLibrary.DES
             return out_s;
         }
 
-        private  string Binary_to_Hex(string binary)
-        {
-            string strHex = Convert.ToInt64(binary, 2).ToString("X");
-            return "0x"+strHex;
-        }
-
         private void swap(ref string L, ref string R)
         {
             string temp;
             temp = L;
             L = R;
             R = temp;
+        }
+        static string BinToHex(string bin)
+        {
+            StringBuilder binary = new StringBuilder(bin);
+            bool isNegative = false;
+            if (binary[0] == '-')
+            {
+                isNegative = true;
+                binary.Remove(0, 1);
+            }
+
+            for (int i = 0, length = binary.Length; i < (4 - length % 4) % 4; i++) //padding leading zeros
+            {
+                binary.Insert(0, '0');
+            }
+
+            StringBuilder hexadecimal = new StringBuilder();
+            StringBuilder word = new StringBuilder("0000");
+            for (int i = 0; i < binary.Length; i += 4)
+            {
+                for (int j = i; j < i + 4; j++)
+                {
+                    word[j % 4] = binary[j];
+                }
+
+                switch (word.ToString())
+                {
+                    case "0000": hexadecimal.Append('0'); break;
+                    case "0001": hexadecimal.Append('1'); break;
+                    case "0010": hexadecimal.Append('2'); break;
+                    case "0011": hexadecimal.Append('3'); break;
+                    case "0100": hexadecimal.Append('4'); break;
+                    case "0101": hexadecimal.Append('5'); break;
+                    case "0110": hexadecimal.Append('6'); break;
+                    case "0111": hexadecimal.Append('7'); break;
+                    case "1000": hexadecimal.Append('8'); break;
+                    case "1001": hexadecimal.Append('9'); break;
+                    case "1010": hexadecimal.Append('A'); break;
+                    case "1011": hexadecimal.Append('B'); break;
+                    case "1100": hexadecimal.Append('C'); break;
+                    case "1101": hexadecimal.Append('D'); break;
+                    case "1110": hexadecimal.Append('E'); break;
+                    case "1111": hexadecimal.Append('F'); break;
+                    default:
+                        return "Invalid number";
+                }
+            }
+
+            if (isNegative)
+            {
+                hexadecimal.Insert(0, '-');
+            }
+            string res= hexadecimal.ToString();
+
+            return "0x" + res;
         }
 
     }
