@@ -32,6 +32,82 @@ namespace SecurityLibrary.AES
         {"f0","8c"},{"f1","a1"},{"f2","89"},{"f3","0d"},{"f4","bf"},{"f5","e6"},{"f6","42"},{"f7","68"},{"f8","41"},{"f9","99"},{"fa","2d"},{"fb","0f"},{"fc","b0"},{"fd","54"},{"fe","bb"},{"ff","16"}
        
         };
+        IDictionary<int, string> RC = new Dictionary<int, string>()
+        {
+            {0,"01000000" },{1,"02000000"},{2,"04000000"},{3,"08000000"},{4,"10000000"},{5,"20000000"},{6,"40000000"},{7,"80000000"},
+            {8,"1b000000" },{9,"36000000"}
+        };
+        public string[] generate_key(string key)
+        {
+            string[] keys = new string[10];
+            string last_col = key.Substring(24, 8);
+            last_col = rotWord(last_col);
+            last_col = subBytes(last_col);
+            string first_col = key.Substring(0, 8);
+            string Rcon = RC[0];
+            string res= XOR(Rcon, XOR(first_col, last_col));
+            keys[0] = res;
+            for(int i =1; i <4; i++)
+            {
+                string sub = key.Substring(i * 8,  8);
+                res = XOR(res, sub);
+                keys[0] += res;
+            }
+            for (int i = 1; i < 10; i++)
+            {
+                string l_c = keys[i - 1].Substring(24, 8);
+                l_c = rotWord(l_c);
+                l_c = subBytes(l_c);
+                string f_c = keys[i - 1].Substring(0, 8);
+                string rc = RC[i];
+                string RES = XOR(rc, XOR(f_c, l_c));
+                keys[i] = RES;
+                for(int j = 1; j < 4; j++)
+                {
+                    string s = keys[i - 1].Substring(j * 8, 8);
+                    RES = XOR(RES, s);
+                    keys[i] += RES;
+                }
+
+            }
+            return keys;
+        }
+        public string subBytes (string col)
+        {
+            string after_Sbox = "";
+            for (int i = 0; i < 8; i = i + 2)
+            {
+                string b=col.Substring(i, 2);
+                after_Sbox += s_box[b];
+            }
+            return after_Sbox;
+        }
+        public string rotWord (string col)
+        {
+            string first_byte= col.Substring(0, 2);
+            string rotated = "";
+            for(int i = 2; i < 8; i=i+2)
+            {
+                rotated+=col.Substring(i, 2);
+            }
+            rotated += first_byte;
+            return rotated;
+
+        }
+        private string XOR(string new_R, string key)
+        {
+            string ans = "";
+
+            for (int i = 0; i < key.Length; i++)
+            {
+                if (new_R[i] == key[i])
+                    ans += "0";
+                else
+                    ans += "1";
+            }
+
+            return ans;
+        }
         public override string Decrypt(string cipherText, string key)
         {
             throw new NotImplementedException();
