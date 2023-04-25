@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecurityLibrary.AES;
 
 namespace SecurityPackageTest
 {
-    [Ignore]
+    
     [TestClass]
     public class ExtendedEuclidTest
     {
