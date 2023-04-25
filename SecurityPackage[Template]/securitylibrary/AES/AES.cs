@@ -42,22 +42,25 @@ namespace SecurityLibrary.AES
             string[] keys = new string[10];
             string last_col = key.Substring(24, 8);
             last_col = rotWord(last_col);
-            last_col = subBytes(last_col);
+           
+            last_col = SubBytes(last_col, s_box);
             string first_col = key.Substring(0, 8);
             string Rcon = RC[0];
             string res= XOR(Rcon, XOR(first_col, last_col));
             keys[0] = res;
+            
             for(int i =1; i <4; i++)
             {
                 string sub = key.Substring(i * 8,  8);
                 res = XOR(res, sub);
                 keys[0] += res;
             }
+           
             for (int i = 1; i < 10; i++)
             {
                 string l_c = keys[i - 1].Substring(24, 8);
                 l_c = rotWord(l_c);
-                l_c = subBytes(l_c);
+                l_c = SubBytes(l_c, s_box);
                 string f_c = keys[i - 1].Substring(0, 8);
                 string rc = RC[i];
                 string RES = XOR(rc, XOR(f_c, l_c));
@@ -68,20 +71,11 @@ namespace SecurityLibrary.AES
                     RES = XOR(RES, s);
                     keys[i] += RES;
                 }
-
+               
             }
             return keys;
         }
-        public string subBytes (string col)
-        {
-            string after_Sbox = "";
-            for (int i = 0; i < 8; i = i + 2)
-            {
-                string b=col.Substring(i, 2);
-                after_Sbox += s_box[b];
-            }
-            return after_Sbox;
-        }
+   
         public string rotWord (string col)
         {
             string first_byte= col.Substring(0, 2);
@@ -94,20 +88,6 @@ namespace SecurityLibrary.AES
             return rotated;
 
         }
-        private string XOR(string new_R, string key)
-        {
-            string ans = "";
-
-            for (int i = 0; i < key.Length; i++)
-            {
-                if (new_R[i] == key[i])
-                    ans += "0";
-                else
-                    ans += "1";
-            }
-
-            return ans;
-        }
         public override string Decrypt(string cipherText, string key)
         {
             throw new NotImplementedException();
@@ -117,6 +97,8 @@ namespace SecurityLibrary.AES
         {
             plainText = plainText.Remove(0, 2);
             key=key.Remove(0, 2);
+            key = key.ToLower();
+            string[] keys = generate_key(key);
             string cipherText = "";
             int num_of_blocks = plainText.Length / 32;
             if(plainText.Length % 32 !=0)
@@ -140,14 +122,14 @@ namespace SecurityLibrary.AES
 
                     string MC = MixColumns(SR);
 
-                    roundi = AddRoundKey(MC, key);
+                    roundi = AddRoundKey(MC, keys[i]);
                 }
                 //final round
                 string subBytes = SubBytes(roundi, s_box);
 
                 string shiftRows = ShiftRows(subBytes);
 
-                string cipher= AddRoundKey(shiftRows, key);
+                string cipher= AddRoundKey(shiftRows, keys[keys.Length - 1]);
                 cipherText += cipher;
             }  
             cipherText = cipherText.Insert(0, "0x");
@@ -238,6 +220,21 @@ namespace SecurityLibrary.AES
             foreach (byte b in ba)
                 hex.AppendFormat("{0:x2}", b);
             return hex.ToString();
+        }
+        private string XOR(string a,string b)
+        {
+            /* Take 2 hexadecimal strings , convert them to bytes , apply xor operation 
+              ,return result
+             */
+            byte[] col1 = StringToByteArray(a);
+            byte[] col2 = StringToByteArray(b);
+            byte[] res = new byte[a.Length / 2];
+            for(int idx=0;idx<res.Length;idx++)
+            {
+                res[idx] = (byte)(col1[idx] ^ col2[idx]);
+            }
+            string hex_res = ByteArrayToString(res);
+            return hex_res;
         }
 
         private string MixColumns(string hexText)
