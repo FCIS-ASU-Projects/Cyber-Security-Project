@@ -22,3 +22,9 @@ C:\Users\heba ali\Documents\Cyber-Security-Project\SecurityPackage[Template]\Sec
 C:\Users\heba ali\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
 C:\Users\heba ali\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
 C:\Users\heba ali\Documents\Cyber-Security-Project\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.dll
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.AssemblyReference.cache
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.csproj.CoreCompileInputs.cache
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.dll
+C:\Huda\FCIS\4th Year\2nd Term\Cyber Security\Tasks\SecurityPackage[Template]\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
